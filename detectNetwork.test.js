@@ -276,12 +276,15 @@ describe('should support Switch', function(){
   var expect = chai.expect;
   var prefixArray = ["4903", "4905", "4911", "4936", "564182", "633110", "6333", "6759"];
 
+    // Iterate through the Prefix array
     for(var i = 0; i < prefixArray.length; i++){
       var prefix = prefixArray[i];
       var actual = prefix;
-      for (var j = 0; j < 16 - prefix.length; j++) {
+      for(var j = 0; j < 16 - prefix.length; j++){
         actual += "0";
       }
+
+      // Test for length of 16
       (function (actual, prefix) {
         it ('has a prefix of ' + prefix + ' and a length of 16', function() {
           expect(detectNetwork(actual)).to.equal('Switch');
@@ -289,6 +292,7 @@ describe('should support Switch', function(){
       })(actual,prefixArray[i])
 
       // Test for length of 18
+      // Add 00 to actual to make actual from 16 characters to 18 characters
       actual += "00";
       (function (actual, prefix) {
         it ('has a prefix of ' + prefix + ' and a length of 18', function() {
@@ -297,7 +301,8 @@ describe('should support Switch', function(){
       })(actual,prefixArray[i])
 
       // Test for length of 19
-      actual += "";
+      // Add 0 to actual to make actual from 18 characters to 19 characters
+      actual += "0";
       (function (actual, prefix) {
         it ('has a prefix of ' + prefix + ' and a length of 19', function() {
           expect(detectNetwork(actual)).to.equal('Switch');
