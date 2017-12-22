@@ -187,7 +187,7 @@ describe('Maestro', function() {
       });
     })(length,actual)
     // Add 0 to the length of actual (Max 19)
-    actual = actual + '0';
+    actual += "0";
   }
 
   // Test for prefix 5020 and lengths 12 - 19
@@ -199,7 +199,7 @@ describe('Maestro', function() {
       });
     })(length,actual)
     // Add 0 to the length of actual (Max 19)
-    actual = actual + '0';
+    actual += "0";
   }
 
   // Test for prefix 5038 and lengths 12 - 19
@@ -211,7 +211,7 @@ describe('Maestro', function() {
       });
     })(length,actual)
     // Add 0 to the length of actual (Max 19)
-    actual = actual + '0';
+    actual += "0";
   }
 
   // Test for prefix 6304 and lengths 12 - 19
@@ -223,7 +223,7 @@ describe('Maestro', function() {
       });
     })(length,actual)
     // Add 0 to the length of actual (Max 19)
-    actual = actual + '0';
+    actual += "0";
   }
 });
 
@@ -240,7 +240,7 @@ describe('should support China UnionPay', function(){
         });
       })(length, actual, prefix)
       // Add 0 to the length of actual (Max 19)
-      actual = actual + '0';
+      actual += "0";
     }
   }
 
@@ -253,7 +253,7 @@ describe('should support China UnionPay', function(){
         });
       })(length, actual, prefix)
       // Add 0 to the length of actual (Max 19)
-      actual = actual + '0';
+      actual += "0";
     }
   }
 
@@ -266,7 +266,7 @@ describe('should support China UnionPay', function(){
         });
       })(length, actual, prefix)
       // Add 0 to the length of actual (Max 19)
-      actual = actual + '0';
+      actual += "0";
     }
   }
 });
@@ -280,7 +280,7 @@ describe('should support Switch', function(){
       var prefix = prefixArray[i];
       var actual = prefix;
       for (var j = 0; j < 16 - prefix.length; j++) {
-        actual = actual + '0';
+        actual += "0";
       }
       (function (actual, prefix) {
         it ('has a prefix of ' + prefix + ' and a length of 16', function() {
@@ -289,7 +289,7 @@ describe('should support Switch', function(){
       })(actual,prefixArray[i])
 
       // Test for length of 18
-      actual = actual + '00';
+      actual += "00";
       (function (actual, prefix) {
         it ('has a prefix of ' + prefix + ' and a length of 18', function() {
           expect(detectNetwork(actual)).to.equal('Switch');
@@ -297,7 +297,7 @@ describe('should support Switch', function(){
       })(actual,prefixArray[i])
 
       // Test for length of 19
-      actual = actual + '0';
+      actual += "";
       (function (actual, prefix) {
         it ('has a prefix of ' + prefix + ' and a length of 19', function() {
           expect(detectNetwork(actual)).to.equal('Switch');
